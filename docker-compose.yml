@@ -1,0 +1,25 @@
+version: '2'
+services:
+  db:
+    image: postgres
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/save-my-slack
+    depends_on:
+      - db
+    links:
+      - db
+    environment:
+      PORT: 3000
+      DB_USER: postgres
+      DB_NAME: save-my-slack
+      DB_PASSWORD: password
+      DB_HOST: db
+    tty: true
+    stdin_open: true
+  volumes:
+    bundle:
+      driver: local
