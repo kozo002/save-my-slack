@@ -5,7 +5,7 @@ ENV GOOS=linux
 ENV GOARCH=amd64
 WORKDIR /go/src/github.com/kozo002/save-my-slack
 COPY . .
-RUN go build main.go
+RUN go build cmd/save-my-slack/main.go
 
 # runtime image
 FROM alpine
